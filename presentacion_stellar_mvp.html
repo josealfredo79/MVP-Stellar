@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parte 1: Mockups y MVP - EIR Stellar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/night.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .reveal h2 {
+            color: #4ade80;
+            text-transform: none;
+            font-weight: 900;
+            font-size: 1.8em;
+            margin-bottom: 0.5em;
+        }
+
+        .reveal h3 {
+            color: #93c5fd;
+            text-transform: none;
+            font-weight: 700;
+            font-size: 1.3em;
+        }
+
+        .reveal p {
+            font-size: 1.15em;
+            line-height: 1.6;
+        }
+
+        .reveal li {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 0.5em;
+        }
+
+        .reveal ul,
+        .reveal ol {
+            margin-left: 0.5em;
+        }
+
+        .reveal .highlight {
+            color: #fca5a5;
+            font-weight: bold;
+        }
+
+        .reveal .question-box {
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
+            color: white;
+            padding: 25px 30px;
+            border-radius: 16px;
+            font-size: 1.2em;
+            font-style: italic;
+            margin-top: 25px;
+            line-height: 1.5;
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .reveal .emoji-big {
+            font-size: 3em;
+            display: block;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Slide 1: Portada -->
+            <section>
+                <h2>De la Idea a la Realidad 🚀</h2>
+                <h3>Parte 1: Mockups y MVP</h3>
+                <p>Programa EIR Stellar — Tlaxiaco, Oaxaca</p>
+            </section>
+
+            <!-- Slide 2: Rompehielos -->
+            <section>
+                <h2>Pregunta Rompehielos ✋</h2>
+                <div class="question-box">"Si les doy $10 millones para hacer un centro comercial... ¿Compran mañana el
+                    cemento y los ladrillos?"</div>
+            </section>
+
+            <!-- Slide 3: Respuesta Rompehielos -->
+            <section>
+                <h2>¡Por supuesto que no! 🏗️</h2>
+                <p>Primero hacen <strong>planos</strong> y una <strong>maqueta de cartón</strong>.</p>
+                <p class="fragment highlight" style="margin-top: 30px; font-size: 1.2em;">Es gratis tirar una pared de
+                    cartón.<br>Tirar un muro de cemento cuesta miles.</p>
+            </section>
+
+            <!-- Slide 4: Qué es un Mockup -->
+            <section>
+                <h2>¿Qué es un Mockup? 📱</h2>
+                <p>Es nuestra <strong>maqueta arquitectónica</strong> digital.</p>
+                <p class="fragment">Un dibujo (en papel o en Figma) de cómo se verá la app. <strong>Sin escribir
+                        código.</strong></p>
+            </section>
+
+            <!-- Slide 5: Ventajas del Mockup -->
+            <section>
+                <h2>¿Por qué dibujar primero? ✏️</h2>
+                <ul>
+                    <li class="fragment">Mover un botón en un dibujo toma <strong>2 segundos</strong>.</li>
+                    <li class="fragment">Moverlo en código: <strong>horas de estrés</strong>.</li>
+                    <li class="fragment highlight">Objetivo: Mostrar tu hoja de papel al usuario en Tlaxiaco y validar
+                        si entiende el flujo.</li>
+                </ul>
+            </section>
+
+            <!-- Slide 6: Ejemplo Visual -->
+            <section>
+                <h2>Ejemplo: User Flow 🎨</h2>
+                <p>Así se dibuja un Mockup en una hoja:</p>
+                <img src="ejemplo_mockup.png" alt="Mockup dibujado a mano"
+                    style="max-height: 380px; border-radius: 12px; border: 3px solid #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+            </section>
+
+            <!-- Slide 7: Happy Path -->
+            <section>
+                <h2>Diseño de Flujo (1/2) 📐</h2>
+                <ul>
+                    <li class="fragment"><strong>1. El "Happy Path":</strong> Dibuja primero el escenario donde el
+                        usuario hace todo bien.<br>(Entrar → Elegir Monto → Enviar con éxito)</li>
+                    <li class="fragment"><strong>2. Las flechas explican la acción:</strong> Escribe QUÉ hizo el usuario
+                        arriba de cada flecha. ("Hace clic", "Desliza")</li>
+                </ul>
+            </section>
+
+            <!-- Slide 8: CTA y 3 Clics -->
+            <section>
+                <h2>Diseño de Flujo (2/2) 📐</h2>
+                <ul>
+                    <li class="fragment"><strong>3. Call to Action (CTA):</strong> Cada pantalla tiene
+                        <strong>UN</strong> botón principal claro y gigante que grite "¡Apriétame!"</li>
+                    <li class="fragment highlight"><strong>4. Regla de los 3 Clics:</strong> Si al artesano de Tlaxiaco
+                        le toma más de 3 clics enviar una remesa... ¡el diseño fracasó!</li>
+                </ul>
+            </section>
+
+            <!-- Slide 9: La Patineta -->
+            <section>
+                <h2>El Auto vs. La Patineta 🛹</h2>
+                <div class="question-box">"Su cliente necesita moverse al trabajo hoy. Deciden inventar el automóvil. El
+                    primer mes solo le entregan 4 llantas y un eje. ¿Le resolvieron algo?"</div>
+            </section>
+
+            <!-- Slide 10: Respuesta Patineta -->
+            <section>
+                <h2>¡Entreguen la patineta! 🛹→🚗</h2>
+                <p class="highlight" style="font-size: 1.2em;">¡No! El cliente sigue caminando.</p>
+                <p class="fragment" style="margin-top: 30px;">Si el primer mes le entregan una
+                    <strong>patineta</strong>, ya le resolvieron el problema básico.</p>
+                <p class="fragment">Luego una bicicleta 🚲, luego una moto 🏍️, luego el auto 🚗.</p>
+            </section>
+
+            <!-- Slide 11: Qué es un MVP -->
+            <section>
+                <h2>¿Qué es un MVP? 🛹</h2>
+                <p><strong>Producto Mínimo Viable:</strong> La versión más chiquita de su idea que <strong>YA
+                        FUNCIONA</strong> de principio a fin.</p>
+                <p class="fragment highlight" style="margin-top: 30px; font-size: 1.15em;">Sin "Feature Creep": NO
+                    tendrá chats, perfiles complejos, ni extras. Solo resuelve <strong>1 problema</strong>.</p>
+            </section>
+
+            <!-- Slide 12: Empatía -->
+            <section>
+                <h2>Empatía Local 🤝</h2>
+                <p>Regla de ORO para Tlaxiaco:</p>
+                <p class="fragment highlight" style="font-size: 1.15em; margin-top: 25px;">Si obligan a un artesano a
+                    descargarse "Freighter" y guardar "24 palabras semilla"... su producto fracasará.</p>
+            </section>
+
+            <!-- Slide 13: Social Login Solución -->
+            <section>
+                <h2>La Solución: Social Login 📲</h2>
+                <p>Un botón de <strong>"Entrar con Google / WhatsApp"</strong> y nosotros creamos la estructura Web3
+                    detrás de escena.</p>
+                <p class="fragment" style="margin-top: 30px; font-size: 1.1em;">El usuario nunca ve blockchains, llaves
+                    ni wallets. Solo ve <strong>pesos mexicanos</strong>.</p>
+            </section>
+
+            <!-- Slide 14: Cierre Parte 1 -->
+            <section>
+                <h2>Siguiente: Parte 2 ➡️</h2>
+                <p>Ejercicios prácticos, Stellar Starter Pack y el MVP Web funcional.</p>
+                <div style="margin-top: 40px;">
+                    <a href="presentacion_parte2.html"
+                        style="display: inline-block; background: linear-gradient(135deg, #4338ca, #6366f1); color: white; padding: 20px 40px; border-radius: 16px; text-decoration: none; font-size: 1.3em; font-weight: bold; box-shadow: 0 8px 25px rgba(67,56,202,0.4);">
+                        <i class="fa-solid fa-arrow-right" style="margin-right: 10px;"></i> Ir a Parte 2
+                    </a>
+                </div>
+            </section>
+
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
+    <script>
+        Reveal.initialize({ hash: true, slideNumber: true, width: 1024, height: 768, margin: 0.12, minScale: 0.2, maxScale: 2.0 });
+    </script>
+</body>
+
+</html>

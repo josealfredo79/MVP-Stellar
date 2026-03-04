@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parte 2: Ejercicios y MVP Web - EIR Stellar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/night.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .reveal h2 {
+            color: #4ade80;
+            text-transform: none;
+            font-weight: 900;
+            font-size: 1.8em;
+            margin-bottom: 0.5em;
+        }
+
+        .reveal h3 {
+            color: #93c5fd;
+            text-transform: none;
+            font-weight: 700;
+            font-size: 1.3em;
+        }
+
+        .reveal p {
+            font-size: 1.15em;
+            line-height: 1.6;
+        }
+
+        .reveal li {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 0.5em;
+        }
+
+        .reveal ul,
+        .reveal ol {
+            margin-left: 0.5em;
+        }
+
+        .reveal .highlight {
+            color: #fca5a5;
+            font-weight: bold;
+        }
+
+        .reveal .question-box {
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
+            color: white;
+            padding: 25px 30px;
+            border-radius: 16px;
+            font-size: 1.2em;
+            font-style: italic;
+            margin-top: 25px;
+            line-height: 1.5;
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .reveal .step-box {
+            background: rgba(59, 130, 246, 0.15);
+            border-left: 4px solid #3b82f6;
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 12px 0;
+            text-align: left;
+            font-size: 1.05em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Slide 1: Portada Parte 2 -->
+            <section>
+                <h2>Parte 2: Manos a la Obra 🛠️</h2>
+                <h3>Ejercicios, Stellar y el MVP Web</h3>
+                <p>Programa EIR Stellar — Tlaxiaco, Oaxaca</p>
+            </section>
+
+            <!-- Slide 2: Ejercicio Paso 1 -->
+            <section>
+                <h2>⏱️ Ejercicio 1 (25 Min)</h2>
+                <p>Dibujen el Mockup del "Happy Path" para <strong>Don Juan (el artesano)</strong>.</p>
+                <div class="step-box fragment">
+                    <strong>[Min 0-5] Enfoque:</strong> Elijan 1 meta: "Enviar remesa", "Ahorrar" o "Cobrar en su
+                    local".
+                </div>
+                <div class="step-box fragment">
+                    <strong>[Min 5-10] Social Login:</strong> Dibujen Pantalla 1 con botón GIGANTE de "Entrar con
+                    WhatsApp". <em>Prohibido escribir "Blockchain".</em>
+                </div>
+            </section>
+
+            <!-- Slide 3: Ejercicio Pasos 3-5 -->
+            <section>
+                <h2>⏱️ Ejercicio 1 (continúa)</h2>
+                <div class="step-box fragment">
+                    <strong>[Min 10-15] CTA:</strong> Dibujen Pantalla 2. "Tu Saldo en Pesos" + UN solo botón enorme
+                    (Ej: "Depositar Pesos").
+                </div>
+                <div class="step-box fragment">
+                    <strong>[Min 15-20] On/Off Ramp:</strong> Pantalla 3 donde el usuario elige su banco local sin saber
+                    que abajo corre Soroban.
+                </div>
+                <div class="step-box fragment highlight">
+                    <strong>[Min 20-25] Validación Cruzada:</strong> Intercambien hojas con otro equipo. Si no la
+                    entienden en 5 segundos, ¡falló el diseño!
+                </div>
+            </section>
+
+            <!-- Slide 4: La Tubería Bancaria -->
+            <section>
+                <h2>La Tubería Bancaria 🏦</h2>
+                <p>¿Cómo conectamos bancos con blockchain (SPEI ↔ Soroban)?</p>
+                <p class="fragment">Hacerlo desde cero toma <strong>años</strong> de requisitos legales.</p>
+                <p class="fragment highlight" style="font-size: 1.2em; margin-top: 25px;">Ahí entra el <strong>Stellar
+                        Regional Starter Pack</strong>.</p>
+            </section>
+
+            <!-- Slide 5: Starter Pack -->
+            <section>
+                <h2>Regional Starter Pack 📦</h2>
+                <ul>
+                    <li class="fragment">Alguien ya construyó esa tubería de código en TypeScript y es <strong>Open
+                            Source</strong>.</li>
+                    <li class="fragment">Viene lista para México con el Anchor <strong>AlfredPay</strong> para procesar
+                        MXN → USDC.</li>
+                    <li class="fragment highlight">Ustedes NO construyen el banco. Construyen <strong>sobre</strong> la
+                        tubería que les da Stellar.</li>
+                </ul>
+            </section>
+
+            <!-- Slide 6: Por qué hacemos esto -->
+            <section>
+                <h2>¿Por qué todo esto? 🎯</h2>
+                <p>Para aplicar al fondo internacional:<br><strong>Stellar Community Fund (Open Track)</strong></p>
+                <p class="fragment" style="margin-top: 25px;">Ellos premian proyectos con:</p>
+            </section>
+
+            <!-- Slide 7: Qué premian -->
+            <section>
+                <h2>Lo que busca el SCF 🏆</h2>
+                <ul>
+                    <li class="fragment">Prototipos en <strong>Soroban</strong> con impacto real (Oaxaca)</li>
+                    <li class="fragment">Modelos de negocio y arquitecturas creativas</li>
+                    <li class="fragment">Métricas de que los usuarios confían en ustedes para pagos locales o remesas
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Slide 8: Misión Dividir -->
+            <section>
+                <h2>Misión: Dividir y Conquistar ⚔️</h2>
+                <div class="step-box">
+                    <strong>🎨 Equipo de Diseño:</strong> Hagan el "User Flow" y dibujen el Mockup del MVP con 3 a 5
+                    pantallas. Desde el Login con Google hasta el depósito.
+                </div>
+                <div class="step-box" style="margin-top: 15px;">
+                    <strong>💻 Equipo Técnico:</strong> Exploren la documentación oficial y clonen el
+                    <em>regional-starter-pack</em>. Entiendan qué es un "Anchor".
+                </div>
+            </section>
+
+            <!-- Slide 9: Ejercicio Rediseño -->
+            <section>
+                <h2>🔄 Ejercicio 2: Rediseño (20 Min)</h2>
+                <p>Nadie hace una App perfecta a la primera.</p>
+                <ul>
+                    <li class="fragment"><strong>¿Hubo confusión?</strong> Si el otro equipo preguntó "¿Qué hace este
+                        botón?"... ese botón está mal diseñado.</li>
+                    <li class="fragment highlight"><strong>Misión:</strong> Vuelvan a dibujar las 3 pantallas con la
+                        "Regla de los 3 Clics" y un CTA claro.</li>
+                </ul>
+            </section>
+
+            <!-- Slide 10: MVP Web Final -->
+            <section>
+                <h2>Su Producto Final 💻🔥</h2>
+                <p>Así luce el MVP Web profesional e interactivo que vamos a construir:</p>
+
+                <div style="margin: 40px 0; text-align: center;">
+                    <a href="mockup_mvp_web.html" target="_blank"
+                        style="display: inline-block; background: linear-gradient(135deg, #4338ca, #6366f1); color: white; padding: 22px 45px; border-radius: 16px; text-decoration: none; font-size: 1.5em; font-weight: bold; box-shadow: 0 10px 30px rgba(67,56,202,0.5);">
+                        <i class="fa-solid fa-rocket" style="margin-right: 12px;"></i> Lanzar MVP Web
+                    </a>
+                </div>
+
+                <p class="highlight" style="font-size: 1em;">Limpio, moderno, Social Login amigable.<br><strong>Esto
+                        buscan los jueces del Stellar Community Fund.</strong></p>
+            </section>
+
+            <!-- Slide 11: Volver a Parte 1 -->
+            <section>
+                <h2>🎓 ¡Gracias!</h2>
+                <p>Recuerden: Primero la maqueta, luego la patineta, después el auto.</p>
+                <div style="margin-top: 40px;">
+                    <a href="presentacion_stellar_mvp.html"
+                        style="display: inline-block; background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.3); color: white; padding: 15px 35px; border-radius: 12px; text-decoration: none; font-size: 1.1em; font-weight: 600;">
+                        <i class="fa-solid fa-arrow-left" style="margin-right: 10px;"></i> Volver a Parte 1
+                    </a>
+                </div>
+            </section>
+
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
+    <script>
+        Reveal.initialize({ hash: true, slideNumber: true, width: 1024, height: 768, margin: 0.12, minScale: 0.2, maxScale: 2.0 });
+    </script>
+</body>
+
+</html>

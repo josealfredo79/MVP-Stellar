@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MiPuebloPay - Web App MVP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        stellar: '#3E1BDB',
+                        stellar_light: '#7A60E6',
+                        dark: '#0F172A',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f8fafc;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .screen {
+            display: none;
+            min-height: 100vh;
+        }
+
+        .screen.active {
+            display: flex;
+            flex-direction: column;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        /* Spinner CSS */
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3E1BDB;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Custom scrollbar para la vista web */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body class="text-slate-800">
+
+    <!-- OVERLAY DE CARGA (Simulación de Backend) -->
+    <div id="loadingOverlay" style="display: none;"
+        class="fixed inset-0 bg-white/90 backdrop-blur-sm z-50 flex flex-col justify-center items-center">
+        <div class="loader mb-4"></div>
+        <p id="loadingText" class="text-stellar font-bold text-lg animate-pulse text-center px-6">Procesando...</p>
+    </div>
+
+    <!-- PANTALLA 1: LOGIN AMIGABLE -->
+    <div id="screen-login" class="screen active p-8 bg-white relative">
+        <div class="flex-1 flex flex-col justify-center items-center max-w-md mx-auto w-full pt-6">
+            <div
+                class="w-24 h-24 bg-indigo-50 rounded-[2rem] flex justify-center items-center text-5xl text-stellar mb-6 shadow-sm border border-indigo-100">
+                <i class="fa-solid fa-leaf"></i>
+            </div>
+            <h1 class="text-4xl font-black mb-3 text-slate-800 tracking-tight text-center">MiPueblo<span
+                    class="text-stellar">Pay</span></h1>
+            <p class="text-center text-slate-500 text-sm mb-12 px-2 leading-relaxed">Enviar y recibir dinero en Oaxaca
+                nunca fue tan fácil. Sin filas, sin bancos de verdad.</p>
+
+            <div class="w-full space-y-4 px-2">
+                <button onclick="simulateLogin('Google')"
+                    class="w-full bg-white border border-slate-300 text-slate-700 font-bold py-4 px-4 rounded-2xl shadow-sm hover:border-slate-400 hover:bg-slate-50 transition flex justify-center items-center space-x-3 text-lg">
+                    <img src="https://ucarecdn.com/13aa1193-4e4b-449e-b9b0-9ce7c3fbae8e/google.svg" alt="Google"
+                        class="w-6 h-6">
+                    <span>Iniciar con Google</span>
+                </button>
+
+                <button onclick="simulateLogin('WhatsApp')"
+                    class="w-full bg-[#25D366] text-white font-bold py-4 px-4 rounded-2xl shadow-[0_4px_15px_rgba(37,211,102,0.3)] hover:bg-[#20bd5a] transition flex justify-center items-center space-x-3 text-lg">
+                    <i class="fa-brands fa-whatsapp text-2xl"></i>
+                    <span>Entrar con WhatsApp</span>
+                </button>
+            </div>
+        </div>
+        <div class="text-[11px] font-medium text-center text-slate-400 mt-auto pb-4">
+            <i class="fa-solid fa-link"></i> Web App protegida por Stellar Network.
+        </div>
+    </div>
+
+    <!-- PANTALLA 2: DASHBOARD DINÁMICO -->
+    <div id="screen-dashboard" class="screen bg-slate-50 relative pb-24">
+        <div class="max-w-md mx-auto w-full">
+
+            <!-- Header con Saldo -->
+            <div
+                class="bg-gradient-to-br from-stellar to-indigo-900 pt-10 pb-10 px-6 text-white rounded-b-[2.5rem] shadow-xl relative overflow-hidden">
+                <!-- Efecto visual -->
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+
+                <div class="flex justify-between items-center mb-6 relative z-10">
+                    <div class="flex items-center space-x-3">
+                        <div
+                            class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex justify-center items-center font-bold text-lg border border-white/30 shadow-sm">
+                            JG
+                        </div>
+                        <div>
+                            <p class="text-indigo-200 text-xs font-semibold tracking-wide uppercase">Hola nuevamente,
+                            </p>
+                            <p class="font-bold text-lg">Juan (Artesano)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative z-10">
+                    <p class="text-indigo-200 text-sm font-medium mb-1 drop-shadow">Tu Saldo Disponible</p>
+                    <div class="flex items-baseline space-x-2">
+                        <h2 class="text-5xl font-black tracking-tight drop-shadow-md" id="balanceDisplay">$0.00</h2>
+                        <span class="text-xl font-bold text-indigo-200">MXN</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones de Acción Mágica (Flex, anchos completos) -->
+            <div class="flex px-6 -mt-8 relative z-20 space-x-4">
+                <button onclick="nav('screen-onramp')"
+                    class="glass rounded-2xl flex-1 py-5 text-center shadow-lg hover:-translate-y-1 hover:shadow-xl transition duration-300">
+                    <div
+                        class="bg-blue-100 text-blue-600 w-12 h-12 rounded-full flex justify-center items-center mx-auto mb-2 text-xl shadow-inner">
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </div>
+                    <p class="font-bold text-slate-800 text-sm">Recargar</p>
+                </button>
+                <button onclick="nav('screen-offramp')"
+                    class="glass rounded-2xl flex-1 py-5 text-center shadow-lg hover:-translate-y-1 hover:shadow-xl transition duration-300">
+                    <div
+                        class="bg-green-100 text-green-600 w-12 h-12 rounded-full flex justify-center items-center mx-auto mb-2 text-xl shadow-inner cursor-pointer">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </div>
+                    <p class="font-bold text-slate-800 text-sm">Enviar</p>
+                </button>
+            </div>
+
+            <!-- Lista Dinámica de Actividades -->
+            <div class="px-6 mt-8">
+                <h3 class="font-bold text-slate-800 mb-4 text-base">Actividad Reciente</h3>
+
+                <div id="txList" class="space-y-3">
+                    <div
+                        class="flex flex-col items-center justify-center py-10 px-4 text-slate-400 bg-white rounded-2xl border border-slate-200 border-dashed">
+                        <i class="fa-solid fa-receipt text-3xl mb-3 opacity-50"></i>
+                        <p class="text-sm font-medium text-center">Tu billetera está vacía.<br>¡Intenta recargar saldo!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Barra de Navegación Inferior Pegajosa -->
+        <div
+            class="fixed bottom-0 w-full bg-white/95 backdrop-blur-md border-t border-slate-200 p-2 pb-safe shadow-[0_-4px_15px_rgba(0,0,0,0.05)] z-40">
+            <div class="max-w-md mx-auto flex justify-between items-center text-[10px] px-6">
+                <div class="flex flex-col items-center text-stellar font-bold cursor-pointer transition p-2">
+                    <i class="fa-solid fa-house mb-1 text-xl"></i>Inicio
+                </div>
+                <div onclick="logOut()"
+                    class="flex flex-col items-center text-slate-400 hover:text-red-500 font-medium cursor-pointer transition p-2">
+                    <i class="fa-solid fa-arrow-right-from-bracket mb-1 text-xl"></i>Cerrar Sesión
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PANTALLA 3: ON-RAMP (Simulador de Depósito) -->
+    <div id="screen-onramp" class="screen bg-white">
+        <div class="max-w-md mx-auto w-full flex flex-col h-full">
+            <div class="pt-8 pb-4 px-6 flex justify-between items-center border-b border-slate-100">
+                <button onclick="nav('screen-dashboard')"
+                    class="text-slate-500 hover:text-slate-800 p-2 -ml-2 transition"><i
+                        class="fa-solid fa-angle-left text-2xl"></i></button>
+                <h3 class="font-bold text-slate-800 text-lg">Recargar Cuenta</h3>
+                <div class="w-8"></div>
+            </div>
+
+            <div class="p-6 flex-1">
+                <div class="bg-blue-50/50 rounded-2xl p-4 mb-8 border border-blue-100 flex items-start space-x-3">
+                    <div class="mt-1 flex-shrink-0 bg-white p-2 text-blue-500 rounded-full shadow-sm">
+                        <i class="fa-solid fa-building-columns"></i>
+                    </div>
+                    <p class="text-xs text-blue-900 leading-relaxed font-medium">Deposita con transferencia bancaria
+                        (Clabe) o en Oxxo. Convertimos tu depósito a dólares (USDC) usando anclas reguladas.</p>
+                </div>
+
+                <label class="block text-sm font-bold text-slate-700 mb-2 ml-1">¿Cuánto depositarás?</label>
+                <div class="relative mb-8 group">
+                    <span
+                        class="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-2xl group-focus-within:text-stellar transition">$</span>
+                    <input type="number" id="depositAmount" placeholder="0.00"
+                        class="w-full bg-slate-50 border-2 border-slate-100 focus:border-stellar rounded-2xl py-6 pl-12 pr-6 text-4xl font-black text-slate-800 outline-none transition"
+                        value="">
+                </div>
+
+                <button onclick="simulateDeposit()"
+                    class="w-full bg-stellar text-white font-bold text-lg py-5 rounded-2xl shadow-lg shadow-stellar/30 hover:bg-stellar_light transition active:scale-[0.98]">
+                    Simular Depósito
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PANTALLA 4: OFF-RAMP (Simulador de Envío) -->
+    <div id="screen-offramp" class="screen bg-white">
+        <div class="max-w-md mx-auto w-full flex flex-col h-full">
+            <div class="pt-8 pb-4 px-6 flex justify-between items-center border-b border-slate-100">
+                <button onclick="nav('screen-dashboard')"
+                    class="text-slate-500 hover:text-slate-800 p-2 -ml-2 transition"><i
+                        class="fa-solid fa-angle-left text-2xl"></i></button>
+                <h3 class="font-bold text-slate-800 text-lg">Enviar Remesa</h3>
+                <div class="w-8"></div>
+            </div>
+
+            <div class="p-6 flex-1">
+                <label class="block text-sm font-bold text-slate-700 mb-2 ml-1">Contacto Destino</label>
+                <div class="bg-slate-50 border-2 border-slate-100 rounded-2xl p-4 flex items-center mb-8 shadow-sm">
+                    <img src="https://ui-avatars.com/api/?name=Diana+Rios&background=10B981&color=fff"
+                        class="w-12 h-12 rounded-full mr-4">
+                    <div class="flex-1">
+                        <p class="font-bold text-slate-800">Diana Ríos</p>
+                        <p class="text-xs text-slate-500 font-medium">Santander: **** 5521</p>
+                    </div>
+                </div>
+
+                <label class="block text-sm font-bold text-slate-700 mb-2 ml-1">Monto a Enviar (Tienes $<span
+                        id="availableToSend"></span>)</label>
+                <div class="relative mb-8 group">
+                    <span
+                        class="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-2xl group-focus-within:text-green-500 transition">$</span>
+                    <input type="number" id="sendAmount" placeholder="0.00"
+                        class="w-full bg-slate-50 border-2 border-slate-100 focus:border-green-500 rounded-2xl py-6 pl-12 pr-6 text-4xl font-black text-slate-800 outline-none transition"
+                        value="">
+                </div>
+
+                <button onclick="simulateSend()"
+                    class="w-full bg-green-500 text-white font-bold text-lg py-5 rounded-2xl shadow-lg shadow-green-500/30 hover:bg-green-400 transition active:scale-[0.98]">
+                    Enviar a cuenta local
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // ==========================================
+        // LÓGICA DEL MVP (Estado interactivo en Web)
+        // ==========================================
+        let appState = {
+            balance: 0.00,
+            transactions: []
+        };
+
+        // Cambiar entre pantallas HTML
+        function nav(screenId) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(screenId).classList.add('active');
+            window.scrollTo(0, 0);
+            updateUI(); // Refrescar datos al cambiar pantalla
+        }
+
+        // Sistema de Carga Visual
+        function showOverlay(text) {
+            document.getElementById('loadingText').innerText = text;
+            document.getElementById('loadingOverlay').style.display = 'flex';
+        }
+        function hideOverlay() {
+            document.getElementById('loadingOverlay').style.display = 'none';
+        }
+
+        // Formateador principal
+        function updateUI() {
+            const formattedBalance = appState.balance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            document.getElementById('balanceDisplay').innerText = '$' + formattedBalance;
+
+            const sendAvailableEl = document.getElementById('availableToSend');
+            if (sendAvailableEl) sendAvailableEl.innerText = formattedBalance;
+
+            // Renderizar Historial de Transacciones
+            const txContainer = document.getElementById('txList');
+            if (appState.transactions.length > 0) {
+                txContainer.innerHTML = '';
+                // Clonar array y revertirlo para mostrar el más reciente arriba
+                [...appState.transactions].reverse().forEach(tx => {
+                    const isPositive = tx.amount > 0;
+                    const sign = isPositive ? '+' : '';
+                    const colorClasses = isPositive ? 'text-blue-600 bg-blue-50 border-blue-100' : 'text-slate-800 bg-slate-50 border-slate-100';
+                    const iconClasses = isPositive ? 'fa-arrow-down text-blue-500' : 'fa-paper-plane text-slate-500';
+                    const amountColor = isPositive ? 'text-blue-600' : 'text-slate-800';
+
+                    const row = `
+                        <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex items-center mb-3">
+                            <div class="w-12 h-12 rounded-[1rem] flex justify-center items-center mr-4 border ${colorClasses}">
+                                <i class="fa-solid ${iconClasses}"></i>
+                            </div>
+                            <div class="flex-1 w-0">
+                                <p class="font-bold text-slate-800 text-sm truncate">${tx.title}</p>
+                                <p class="text-xs text-slate-400">${tx.date}</p>
+                            </div>
+                            <div class="font-black text-right pl-2 ${amountColor}">
+                                ${sign}$${Math.abs(tx.amount).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                            </div>
+                        </div>
+                    `;
+                    txContainer.innerHTML += row;
+                });
+            }
+        }
+
+        // ==========================================
+        // FLUJOS SIMULADOS (Mock de Lógica Blockchain)
+        // ==========================================
+
+        function simulateLogin(method) {
+            showOverlay(`Abriendo Bóveda con ${method}...`);
+            setTimeout(() => {
+                hideOverlay();
+                nav('screen-dashboard');
+            }, 1200);
+        }
+
+        function simulateDeposit() {
+            let input = document.getElementById('depositAmount').value;
+            let amount = parseFloat(input);
+
+            if (isNaN(amount) || amount <= 0) { alert("Ingresa un monto válido"); return; }
+
+            // Simulamos el retraso de red al conectar por SPEI / AlfredPay
+            showOverlay("Comunicando con Anchor Bancario...");
+            setTimeout(() => {
+                document.getElementById('loadingText').innerText = "Convirtiendo fondos en Soroban...";
+                setTimeout(() => {
+                    // Modificamos el estado
+                    appState.balance += amount;
+                    const now = new Date();
+                    appState.transactions.push({
+                        title: "Recarga de Saldo (SPEI)",
+                        amount: amount,
+                        date: now.toLocaleDateString() + ' ' + now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+                    });
+
+                    document.getElementById('depositAmount').value = '';
+                    hideOverlay();
+                    nav('screen-dashboard');
+                }, 1000);
+            }, 1000);
+        }
+
+        function simulateSend() {
+            let input = document.getElementById('sendAmount').value;
+            let amount = parseFloat(input);
+
+            if (isNaN(amount) || amount <= 0) { alert("Ingresa un monto válido"); return; }
+            if (amount > appState.balance) {
+                alert(`Saldo insuficiente. Tienes $${appState.balance.toFixed(2)} disponibles.`);
+                return;
+            }
+
+            // Simulamos despliegue y validación
+            showOverlay("Confirmando con la red Stellar...");
+            setTimeout(() => {
+                // Modificamos el estado restando
+                appState.balance -= amount;
+                const now = new Date();
+                appState.transactions.push({
+                    title: "Envío a Diana Ríos",
+                    amount: -amount,
+                    date: now.toLocaleDateString() + ' ' + now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+                });
+
+                document.getElementById('sendAmount').value = '';
+                hideOverlay();
+                nav('screen-dashboard');
+            }, 1500);
+        }
+
+        function logOut() {
+            appState.balance = 0;
+            appState.transactions = [];
+            // Reset state
+            document.getElementById('txList').innerHTML = `
+                <div class="flex flex-col items-center justify-center py-10 px-4 text-slate-400 bg-white rounded-2xl border border-slate-200 border-dashed">
+                    <i class="fa-solid fa-receipt text-3xl mb-3 opacity-50"></i>
+                    <p class="text-sm font-medium text-center">Tu billetera está vacía.<br>¡Intenta recargar saldo!</p>
+                </div>
+            `;
+            nav('screen-login');
+        }
+    </script>
+</body>
+
+</html>

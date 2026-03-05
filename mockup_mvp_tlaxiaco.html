@@ -206,12 +206,17 @@
         <div
             class="fixed bottom-0 w-full bg-white/95 backdrop-blur-md border-t border-slate-200 p-2 pb-safe shadow-[0_-4px_15px_rgba(0,0,0,0.05)] z-40">
             <div class="max-w-md mx-auto flex justify-between items-center text-[10px] px-6">
-                <div class="flex flex-col items-center text-stellar font-bold cursor-pointer transition p-2">
+                <div onclick="nav('screen-dashboard')"
+                    class="flex flex-col items-center text-stellar font-bold cursor-pointer transition p-2">
                     <i class="fa-solid fa-house mb-1 text-xl"></i>Inicio
+                </div>
+                <div onclick="nav('screen-historial')"
+                    class="flex flex-col items-center text-slate-400 hover:text-stellar font-medium cursor-pointer transition p-2">
+                    <i class="fa-solid fa-clock-rotate-left mb-1 text-xl"></i>Historial
                 </div>
                 <div onclick="logOut()"
                     class="flex flex-col items-center text-slate-400 hover:text-red-500 font-medium cursor-pointer transition p-2">
-                    <i class="fa-solid fa-arrow-right-from-bracket mb-1 text-xl"></i>Cerrar Sesión
+                    <i class="fa-solid fa-arrow-right-from-bracket mb-1 text-xl"></i>Salir
                 </div>
             </div>
         </div>
@@ -295,6 +300,340 @@
     </div>
 
 
+    <!-- PANTALLA 5: HISTORIAL DE TRANSACCIONES -->
+    <div id="screen-historial" class="screen bg-slate-50 pb-24">
+        <div class="max-w-md mx-auto w-full">
+
+            <!-- Header -->
+            <div
+                class="bg-gradient-to-br from-stellar to-indigo-900 pt-10 pb-16 px-6 text-white rounded-b-[2.5rem] shadow-xl relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+                <div class="flex items-center space-x-3 mb-6 relative z-10">
+                    <button onclick="nav('screen-dashboard')" class="text-white/70 hover:text-white transition p-1">
+                        <i class="fa-solid fa-angle-left text-2xl"></i>
+                    </button>
+                    <h2 class="font-bold text-xl">Historial Completo</h2>
+                </div>
+
+                <!-- Tarjetas de Resumen -->
+                <div class="flex space-x-4 relative z-10">
+                    <div class="flex-1 bg-white/15 backdrop-blur-md rounded-2xl p-4 border border-white/20">
+                        <p class="text-indigo-200 text-xs font-semibold mb-1">Total Recibido</p>
+                        <p id="totalIn" class="text-white font-black text-xl">$0.00</p>
+                    </div>
+                    <div class="flex-1 bg-white/15 backdrop-blur-md rounded-2xl p-4 border border-white/20">
+                        <p class="text-indigo-200 text-xs font-semibold mb-1">Total Enviado</p>
+                        <p id="totalOut" class="text-white font-black text-xl">$0.00</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lista de Transacciones -->
+            <div class="px-6 -mt-6 relative z-20">
+                <div id="historialList" class="space-y-3">
+                    <div
+                        class="flex flex-col items-center justify-center py-10 px-4 text-slate-400 bg-white rounded-2xl border border-slate-200 border-dashed shadow-sm">
+                        <i class="fa-solid fa-receipt text-3xl mb-3 opacity-50"></i>
+                        <p class="text-sm font-medium text-center">Aún no hay movimientos.<br>¡Realiza tu primera
+                            recarga!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Barra inferior -->
+        <div
+            class="fixed bottom-0 w-full bg-white/95 backdrop-blur-md border-t border-slate-200 p-2 pb-safe shadow-[0_-4px_15px_rgba(0,0,0,0.05)] z-40">
+            <div class="max-w-md mx-auto flex justify-between items-center text-[10px] px-6">
+                <div onclick="nav('screen-dashboard')"
+                    class="flex flex-col items-center text-slate-400 hover:text-stellar font-medium cursor-pointer transition p-2">
+                    <i class="fa-solid fa-house mb-1 text-xl"></i>Inicio
+                </div>
+                <div onclick="nav('screen-historial')"
+                    class="flex flex-col items-center text-stellar font-bold cursor-pointer transition p-2">
+                    <i class="fa-solid fa-clock-rotate-left mb-1 text-xl"></i>Historial
+                </div>
+                <div onclick="logOut()"
+                    class="flex flex-col items-center text-slate-400 hover:text-red-500 font-medium cursor-pointer transition p-2">
+                    <i class="fa-solid fa-arrow-right-from-bracket mb-1 text-xl"></i>Salir
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- PANTALLA 6: MEJORES PRÁCTICAS UI/UX PARA EL MVP -->
+    <div id="screen-uiux" class="screen bg-slate-50 pb-24">
+        <div class="max-w-md mx-auto w-full">
+
+            <!-- Header Hero -->
+            <div
+                class="bg-gradient-to-br from-violet-700 via-stellar to-indigo-900 pt-10 pb-12 px-6 text-white rounded-b-[2.5rem] shadow-xl relative overflow-hidden">
+                <div class="absolute -bottom-8 -left-8 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
+                <div class="absolute -top-8 -right-8 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+                <div class="flex items-center space-x-3 mb-5 relative z-10">
+                    <button onclick="nav('screen-dashboard')" class="text-white/70 hover:text-white transition p-1">
+                        <i class="fa-solid fa-angle-left text-2xl"></i>
+                    </button>
+                    <div>
+                        <p class="text-indigo-200 text-xs font-semibold tracking-widest uppercase">Guía de Diseño</p>
+                        <h2 class="font-black text-2xl leading-tight">Mejores Prácticas<br>UI/UX para un MVP</h2>
+                    </div>
+                </div>
+                <div
+                    class="relative z-10 flex items-center space-x-3 bg-white/15 rounded-2xl p-3 border border-white/20 backdrop-blur-sm">
+                    <div
+                        class="bg-yellow-400 text-yellow-900 rounded-full w-9 h-9 flex items-center justify-center flex-shrink-0 shadow">
+                        <i class="fa-solid fa-lightbulb text-sm"></i>
+                    </div>
+                    <p class="text-indigo-100 text-xs leading-relaxed font-medium">Diseña para validar rápido, no para
+                        ser perfecto. El MVP debe aprender, no impresionar.</p>
+                </div>
+            </div>
+
+            <!-- Steps -->
+            <div class="px-5 mt-6 space-y-4">
+
+                <!-- Paso 1 -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                    <div class="bg-blue-600 text-white px-4 py-3 flex items-center space-x-3">
+                        <span
+                            class="bg-white text-blue-600 font-black text-sm w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0">1</span>
+                        <div>
+                            <p class="font-bold text-sm">Define UN solo flujo crítico</p>
+                            <p class="text-blue-200 text-[11px]">Core User Flow</p>
+                        </div>
+                        <i class="fa-solid fa-route ml-auto text-blue-200 text-lg"></i>
+                    </div>
+                    <div class="p-4 space-y-2 text-sm text-slate-600">
+                        <p>Identifica la acción más valiosa que tu usuario necesita completar y diseña <strong
+                                class="text-slate-800">todo alrededor de ese único flujo.</strong></p>
+                        <div class="bg-blue-50 rounded-xl p-3 text-xs space-y-1.5 border border-blue-100">
+                            <p class="flex items-start gap-2"><span class="text-blue-500 font-bold mt-0.5">▸</span>
+                                Mapea el flujo en papel antes de diseñar en pantalla.</p>
+                            <p class="flex items-start gap-2"><span class="text-blue-500 font-bold mt-0.5">▸</span>
+                                Elimina cada pantalla que no sea parte del flujo principal.</p>
+                            <p class="flex items-start gap-2"><span class="text-blue-500 font-bold mt-0.5">▸</span>
+                                Ejemplo MiPuebloPay: Login → Saldo → Recargar/Enviar.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paso 2 -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                    <div class="bg-violet-600 text-white px-4 py-3 flex items-center space-x-3">
+                        <span
+                            class="bg-white text-violet-600 font-black text-sm w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0">2</span>
+                        <div>
+                            <p class="font-bold text-sm">Jerarquía Visual Clara</p>
+                            <p class="text-violet-200 text-[11px]">Visual Hierarchy</p>
+                        </div>
+                        <i class="fa-solid fa-layer-group ml-auto text-violet-200 text-lg"></i>
+                    </div>
+                    <div class="p-4 space-y-2 text-sm text-slate-600">
+                        <p>El ojo del usuario debe saber <strong class="text-slate-800">qué ver primero sin
+                                pensar.</strong> Usa tamaño, peso y color para guiar la atención.</p>
+                        <div class="bg-violet-50 rounded-xl p-3 text-xs space-y-1.5 border border-violet-100">
+                            <p class="flex items-start gap-2"><span class="text-violet-500 font-bold mt-0.5">▸</span>
+                                Título grande → Subtítulo → Acción. Nunca al revés.</p>
+                            <p class="flex items-start gap-2"><span class="text-violet-500 font-bold mt-0.5">▸</span> Un
+                                solo CTA (Call to Action) primario por pantalla.</p>
+                            <p class="flex items-start gap-2"><span class="text-violet-500 font-bold mt-0.5">▸</span>
+                                Usa contraste mínimo 4.5:1 para texto accesible (WCAG AA).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paso 3 -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                    <div class="bg-emerald-600 text-white px-4 py-3 flex items-center space-x-3">
+                        <span
+                            class="bg-white text-emerald-600 font-black text-sm w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0">3</span>
+                        <div>
+                            <p class="font-bold text-sm">Mobile-First siempre</p>
+                            <p class="text-emerald-200 text-[11px]">Diseña para el pulgar</p>
+                        </div>
+                        <i class="fa-solid fa-mobile-screen ml-auto text-emerald-200 text-lg"></i>
+                    </div>
+                    <div class="p-4 space-y-2 text-sm text-slate-600">
+                        <p>El 80%+ de usuarios de remesas en zonas rurales usa <strong class="text-slate-800">solo su
+                                celular.</strong> Diseña para eso primero.</p>
+                        <div class="bg-emerald-50 rounded-xl p-3 text-xs space-y-1.5 border border-emerald-100">
+                            <p class="flex items-start gap-2"><span class="text-emerald-600 font-bold mt-0.5">▸</span>
+                                Botones táctiles mínimo 48x48 px (zona de toque segura).</p>
+                            <p class="flex items-start gap-2"><span class="text-emerald-600 font-bold mt-0.5">▸</span>
+                                Navegación principal en la parte inferior (thumb zone).</p>
+                            <p class="flex items-start gap-2"><span class="text-emerald-600 font-bold mt-0.5">▸</span>
+                                Evita menús hamburguesa: esconde información clave.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paso 4 -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                    <div class="bg-orange-500 text-white px-4 py-3 flex items-center space-x-3">
+                        <span
+                            class="bg-white text-orange-500 font-black text-sm w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0">4</span>
+                        <div>
+                            <p class="font-bold text-sm">Feedback Visual Inmediato</p>
+                            <p class="text-orange-100 text-[11px]">Microinteracciones</p>
+                        </div>
+                        <i class="fa-solid fa-bolt ml-auto text-orange-200 text-lg"></i>
+                    </div>
+                    <div class="p-4 space-y-2 text-sm text-slate-600">
+                        <p>El usuario necesita saber si su acción <strong class="text-slate-800">funcionó o falló en
+                                menos de 1 segundo.</strong> El silencio genera desconfianza.</p>
+                        <div class="bg-orange-50 rounded-xl p-3 text-xs space-y-1.5 border border-orange-100">
+                            <p class="flex items-start gap-2"><span class="text-orange-500 font-bold mt-0.5">▸</span>
+                                Spinners o skeleton screens al cargar datos.</p>
+                            <p class="flex items-start gap-2"><span class="text-orange-500 font-bold mt-0.5">▸</span>
+                                Botones deben cambiar estado (loading, success, error).</p>
+                            <p class="flex items-start gap-2"><span class="text-orange-500 font-bold mt-0.5">▸</span>
+                                Mensajes de confirmación claros: "¡Enviado!" no "OK".</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paso 5 -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                    <div class="bg-sky-600 text-white px-4 py-3 flex items-center space-x-3">
+                        <span
+                            class="bg-white text-sky-600 font-black text-sm w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0">5</span>
+                        <div>
+                            <p class="font-bold text-sm">Lenguaje Simple y Local</p>
+                            <p class="text-sky-200 text-[11px]">UX Writing</p>
+                        </div>
+                        <i class="fa-solid fa-language ml-auto text-sky-200 text-lg"></i>
+                    </div>
+                    <div class="p-4 space-y-2 text-sm text-slate-600">
+                        <p>Usa las palabras que <strong class="text-slate-800">tu usuario ya usa</strong> en su vida
+                            diaria, no términos técnicos de blockchain o fintech.</p>
+                        <div class="bg-sky-50 rounded-xl p-3 text-xs space-y-1.5 border border-sky-100">
+                            <p class="flex items-start gap-2"><span class="text-sky-600 font-bold mt-0.5">▸</span> ❌
+                                "Firmar transacción" → ✅ "Confirmar envío"</p>
+                            <p class="flex items-start gap-2"><span class="text-sky-600 font-bold mt-0.5">▸</span> ❌
+                                "Hash de bloque" → ✅ "Número de comprobante"</p>
+                            <p class="flex items-start gap-2"><span class="text-sky-600 font-bold mt-0.5">▸</span>
+                                Prueba el copy con alguien de tu comunidad objetivo.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paso 6 -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                    <div class="bg-pink-600 text-white px-4 py-3 flex items-center space-x-3">
+                        <span
+                            class="bg-white text-pink-600 font-black text-sm w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0">6</span>
+                        <div>
+                            <p class="font-bold text-sm">Manejo de Errores Amigable</p>
+                            <p class="text-pink-200 text-[11px]">Error States</p>
+                        </div>
+                        <i class="fa-solid fa-triangle-exclamation ml-auto text-pink-200 text-lg"></i>
+                    </div>
+                    <div class="p-4 space-y-2 text-sm text-slate-600">
+                        <p>Los errores son inevitables. <strong class="text-slate-800">Cómo los manejas define si el
+                                usuario vuelve o abandona la app.</strong></p>
+                        <div class="bg-pink-50 rounded-xl p-3 text-xs space-y-1.5 border border-pink-100">
+                            <p class="flex items-start gap-2"><span class="text-pink-600 font-bold mt-0.5">▸</span>
+                                Muestra el error en contexto, no en un popup genérico.</p>
+                            <p class="flex items-start gap-2"><span class="text-pink-600 font-bold mt-0.5">▸</span> Di
+                                qué salió mal Y cómo solucionarlo (acción clara).</p>
+                            <p class="flex items-start gap-2"><span class="text-pink-600 font-bold mt-0.5">▸</span>
+                                Preserva los datos que el usuario ya escribió al fallar.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paso 7 -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                    <div class="bg-teal-600 text-white px-4 py-3 flex items-center space-x-3">
+                        <span
+                            class="bg-white text-teal-600 font-black text-sm w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0">7</span>
+                        <div>
+                            <p class="font-bold text-sm">Confianza y Seguridad Visual</p>
+                            <p class="text-teal-200 text-[11px]">Trust Signals</p>
+                        </div>
+                        <i class="fa-solid fa-shield-halved ml-auto text-teal-200 text-lg"></i>
+                    </div>
+                    <div class="p-4 space-y-2 text-sm text-slate-600">
+                        <p>En finanzas, <strong class="text-slate-800">el diseño transmite seguridad</strong> antes que
+                            cualquier texto. Un MVP descuidado no inspira confianza con el dinero.</p>
+                        <div class="bg-teal-50 rounded-xl p-3 text-xs space-y-1.5 border border-teal-100">
+                            <p class="flex items-start gap-2"><span class="text-teal-600 font-bold mt-0.5">▸</span> Usa
+                                íconos de candado, escudos y sellos de manera visible.</p>
+                            <p class="flex items-start gap-2"><span class="text-teal-600 font-bold mt-0.5">▸</span>
+                                Muestra logos de tecnología respaldada (Stellar, USDC).</p>
+                            <p class="flex items-start gap-2"><span class="text-teal-600 font-bold mt-0.5">▸</span>
+                                Incluye nombre y número de comprobante en cada transacción.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paso 8 -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                    <div
+                        class="bg-gradient-to-r from-stellar to-violet-600 text-white px-4 py-3 flex items-center space-x-3">
+                        <span
+                            class="bg-white text-stellar font-black text-sm w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0">8</span>
+                        <div>
+                            <p class="font-bold text-sm">Prueba con Usuarios Reales</p>
+                            <p class="text-indigo-200 text-[11px]">Guerrilla Usability Testing</p>
+                        </div>
+                        <i class="fa-solid fa-users ml-auto text-indigo-200 text-lg"></i>
+                    </div>
+                    <div class="p-4 space-y-2 text-sm text-slate-600">
+                        <p>El mejor rediseño proviene de <strong class="text-slate-800">observar a 5 personas reales
+                                usar tu MVP</strong> en silencio, sin ayudarles.</p>
+                        <div class="bg-indigo-50 rounded-xl p-3 text-xs space-y-1.5 border border-indigo-100">
+                            <p class="flex items-start gap-2"><span class="text-stellar font-bold mt-0.5">▸</span>
+                                Recluta 5 personas de tu comunidad objetivo (Tlaxiaco).</p>
+                            <p class="flex items-start gap-2"><span class="text-stellar font-bold mt-0.5">▸</span>
+                                Pídeles completar la tarea: "Envíale $200 a Diana".</p>
+                            <p class="flex items-start gap-2"><span class="text-stellar font-bold mt-0.5">▸</span> Anota
+                                dónde se detienen. Ahí está el problema de UX.</p>
+                            <p class="flex items-start gap-2"><span class="text-stellar font-bold mt-0.5">▸</span> Itera
+                                y vuelve a probar. El MVP mejora con cada ronda.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer card -->
+                <div
+                    class="bg-gradient-to-br from-stellar to-indigo-800 rounded-2xl p-5 text-white text-center shadow-lg mb-2">
+                    <i class="fa-solid fa-star text-yellow-300 text-2xl mb-2"></i>
+                    <p class="font-black text-base mb-1">Regla de Oro del MVP</p>
+                    <p class="text-indigo-200 text-xs leading-relaxed">"Haz que funcione. Luego hazlo bonito. Luego
+                        hazlo rápido." — El orden importa.</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Barra inferior -->
+        <div
+            class="fixed bottom-0 w-full bg-white/95 backdrop-blur-md border-t border-slate-200 p-2 pb-safe shadow-[0_-4px_15px_rgba(0,0,0,0.05)] z-40">
+            <div class="max-w-md mx-auto flex justify-between items-center text-[10px] px-6">
+                <div onclick="nav('screen-dashboard')"
+                    class="flex flex-col items-center text-slate-400 hover:text-stellar font-medium cursor-pointer transition p-2">
+                    <i class="fa-solid fa-house mb-1 text-xl"></i>Inicio
+                </div>
+                <div onclick="nav('screen-historial')"
+                    class="flex flex-col items-center text-slate-400 hover:text-stellar font-medium cursor-pointer transition p-2">
+                    <i class="fa-solid fa-clock-rotate-left mb-1 text-xl"></i>Historial
+                </div>
+                <div onclick="nav('screen-uiux')"
+                    class="flex flex-col items-center text-violet-600 font-bold cursor-pointer transition p-2">
+                    <i class="fa-solid fa-palette mb-1 text-xl"></i>UI/UX
+                </div>
+                <div onclick="logOut()"
+                    class="flex flex-col items-center text-slate-400 hover:text-red-500 font-medium cursor-pointer transition p-2">
+                    <i class="fa-solid fa-arrow-right-from-bracket mb-1 text-xl"></i>Salir
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <script>
         // ==========================================
         // LÓGICA DEL MVP (Estado interactivo en Web)
@@ -357,6 +696,45 @@
                     `;
                     txContainer.innerHTML += row;
                 });
+            }
+            // Actualizar pantalla de historial si existe (sin romper si no está activa)
+            const histList = document.getElementById('historialList');
+            if (histList) {
+                let totalIn = 0, totalOut = 0;
+                if (appState.transactions.length > 0) {
+                    histList.innerHTML = '';
+                    [...appState.transactions].reverse().forEach(tx => {
+                        const isPositive = tx.amount > 0;
+                        isPositive ? (totalIn += tx.amount) : (totalOut += Math.abs(tx.amount));
+                        const sign = isPositive ? '+' : '';
+                        const colorClasses = isPositive ? 'text-blue-600 bg-blue-50 border-blue-100' : 'text-green-700 bg-green-50 border-green-100';
+                        const iconClasses = isPositive ? 'fa-arrow-down text-blue-500' : 'fa-paper-plane text-green-600';
+                        const amountColor = isPositive ? 'text-blue-600' : 'text-slate-700';
+                        histList.innerHTML += `
+                            <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex items-center">
+                                <div class="w-12 h-12 rounded-[1rem] flex justify-center items-center mr-4 border ${colorClasses}">
+                                    <i class="fa-solid ${iconClasses}"></i>
+                                </div>
+                                <div class="flex-1 w-0">
+                                    <p class="font-bold text-slate-800 text-sm truncate">${tx.title}</p>
+                                    <p class="text-xs text-slate-400">${tx.date}</p>
+                                </div>
+                                <div class="font-black text-right pl-2 ${amountColor}">
+                                    ${sign}$${Math.abs(tx.amount).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                                </div>
+                            </div>
+                        `;
+                    });
+                } else {
+                    histList.innerHTML = `
+                        <div class="flex flex-col items-center justify-center py-10 px-4 text-slate-400 bg-white rounded-2xl border border-slate-200 border-dashed shadow-sm">
+                            <i class="fa-solid fa-receipt text-3xl mb-3 opacity-50"></i>
+                            <p class="text-sm font-medium text-center">Aún no hay movimientos.<br>¡Realiza tu primera recarga!</p>
+                        </div>
+                    `;
+                }
+                document.getElementById('totalIn').innerText = '$' + totalIn.toLocaleString('en-US', { minimumFractionDigits: 2 });
+                document.getElementById('totalOut').innerText = '$' + totalOut.toLocaleString('en-US', { minimumFractionDigits: 2 });
             }
         }
 
